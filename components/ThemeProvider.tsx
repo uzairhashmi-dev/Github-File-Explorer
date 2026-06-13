@@ -1,10 +1,10 @@
 'use client';
 
-
 import {
   createContext,
   useContext,
   useEffect,
+  useRef,
   useState,
   useCallback,
   type ReactNode,
@@ -24,16 +24,23 @@ const ThemeContext = createContext<ThemeContextValue>({
   setTheme: () => {},
 });
 
+function getInitialTheme(): Theme {
+  const saved = localStorage.getItem('gitexplorer-theme') as Theme | null;
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return saved ?? (prefersDark ? 'dark' : 'light');
+}
+
 export function ThemeProvider({ children }: { children: ReactNode }) {
+  const initialThemeRef = useRef<Theme | null>(null);
   const [theme, setThemeState] = useState<Theme>('dark');
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem('gitexplorer-theme') as Theme | null;
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const initial: Theme = saved ?? (prefersDark ? 'dark' : 'light');
-    applyTheme(initial);
-    setThemeState(initial);
+    if (initialThemeRef.current === null) {
+      initialThemeRef.current = getInitialTheme();
+    }
+    applyTheme(initialThemeRef.current);
+    setThemeState(initialThemeRef.current);
     setMounted(true);
   }, []);
 

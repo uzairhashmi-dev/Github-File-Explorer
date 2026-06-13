@@ -1,3 +1,5 @@
+// app/layout.tsx
+// Root layout — wraps every page with ThemeProvider + Navbar.
 
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
@@ -32,7 +34,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning className={`${geist.variable} ${geistMono.variable}`}>
-      <body className="font-sans">
+      <body className="font-sans" suppressHydrationWarning>
         <ThemeProvider>
           <Navbar />
           <main className="min-h-[calc(100dvh-4rem)]">
