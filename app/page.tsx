@@ -50,12 +50,12 @@ export default function HomePage() {
         </p>
 
         {/* Search */}
-        <div className="relative z-9999 flex justify-center animate-fade-up-delay">
+        <div className="relative z-50 flex justify-center animate-fade-up-delay">
           <SearchBar />
         </div>
 
         {/* Feature badges */}
-        <div className="mt-6 flex flex-wrap justify-center gap-2 animate-fade-up-delay">
+        <div className="relative z-0 mt-6 flex flex-wrap justify-center gap-2 animate-fade-up-delay">
           {FEATURES.map(({ icon: Icon, label }) => (
             <span
               key={label}
@@ -68,7 +68,7 @@ export default function HomePage() {
         </div>
 
         {/* Popular users */}
-        <div className="mt-8 animate-fade-up-delay">
+        <div className="relative z-0 mt-8 animate-fade-up-delay">
           <p className="mb-3 text-xs font-medium uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
             Popular profiles
           </p>

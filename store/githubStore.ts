@@ -49,8 +49,7 @@ export const useGitHubStore = create<GitHubStore>()(
       languages:       {},
       searchQuery:     '',
       repoSearch:      '',
-      recentSearches:  [],
-
+      recentSearches: loadRecent(),
       // ── Status
       userStatus:      'idle',
       repoStatus:      'idle',

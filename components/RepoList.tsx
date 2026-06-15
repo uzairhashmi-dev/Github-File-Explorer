@@ -2,7 +2,7 @@
 
 // components/RepoList.tsx
 // Repo grid with sort, filter by language, and search within repos.
-// On "Explore Files" click → navigates to file explorer page.
+// On "Explore Files" click → navigates to file explorer page. 
 
 import { useRouter } from 'next/navigation';
 import { Search, SlidersHorizontal, BookOpen } from 'lucide-react';
@@ -50,7 +50,7 @@ export default function RepoList({ username, repos }: RepoListProps) {
   return (
     <div className="space-y-4 animate-fade-in">
 
-      {/* ── Toolbar ──────────────────────────────────────────────────────── */}
+      {/* ── Toolbar  */}
       <div className="flex flex-wrap gap-2">
 
         {/* Repo search */}
@@ -100,7 +100,7 @@ export default function RepoList({ username, repos }: RepoListProps) {
         </div>
       </div>
 
-      {/* ── Stats bar ────────────────────────────────────────────────────── */}
+      {/* ── Stats bar  */}
       <div className="flex items-center justify-between">
         <p className="flex items-center gap-1.5 text-xs text-zinc-500 dark:text-zinc-400">
           <BookOpen className="h-3.5 w-3.5" />
@@ -118,14 +118,14 @@ export default function RepoList({ username, repos }: RepoListProps) {
         )}
       </div>
 
-      {/* ── Loading ───────────────────────────────────────────────────────── */}
+      {/* ── Loading  */}
       {repoStatus === 'loading' && (
         <div className="grid gap-3 sm:grid-cols-2">
           {Array.from({ length: 6 }).map((_, i) => <RepoCardSkeleton key={i} />)}
         </div>
       )}
 
-      {/* ── Empty state ───────────────────────────────────────────────────── */}
+      {/* ── Empty state */}
       {repoStatus === 'success' && repos.length === 0 && (
         <div className="flex flex-col items-center justify-center rounded-xl border border-dashed border-zinc-300 py-16 text-center dark:border-zinc-700">
           <BookOpen className="mb-3 h-10 w-10 text-zinc-300 dark:text-zinc-600" />
@@ -143,7 +143,7 @@ export default function RepoList({ username, repos }: RepoListProps) {
         </div>
       )}
 
-      {/* ── Repo grid ─────────────────────────────────────────────────────── */}
+      {/* ── Repo grid ───*/}
       {repoStatus === 'success' && repos.length > 0 && (
         <div className="grid gap-3 sm:grid-cols-2">
           {repos.map((repo) => (

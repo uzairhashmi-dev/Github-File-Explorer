@@ -85,7 +85,7 @@ export default function RepoPage() {
     <div className="mx-auto w-full max-w-7xl px-4 py-6 sm:px-6 lg:py-8">
 
       {/* Search bar */}
-      <div className="mb-5 relative z-9999 flex justify-center animate-fade-in">
+      <div className="mb-5 relative  flex justify-center animate-fade-in">
         <SearchBar />
       </div>
 

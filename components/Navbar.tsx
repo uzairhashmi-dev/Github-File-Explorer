@@ -44,7 +44,7 @@ export default function Navbar() {
   }
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-zinc-200/80 bg-white/90 backdrop-blur-md dark:border-zinc-800/80 dark:bg-[#0d1117]/90 transition-colors duration-300">
+    <header className="sticky top-0 z-999 w-full border-b border-zinc-200/80 bg-white/90  backdrop-blur-md dark:border-zinc-800/80 dark:bg-[#0d1117]/90 transition-colors duration-300">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* ── Brand  */}
         <Link
