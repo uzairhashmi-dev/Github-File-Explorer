@@ -35,7 +35,6 @@ function saveRecent(searches: string[]): void {
   localStorage.setItem(RECENT_KEY, JSON.stringify(searches));
 }
 
-
 export const useGitHubStore = create<GitHubStore>()(
   devtools(
     (set, get) => ({
@@ -49,7 +48,7 @@ export const useGitHubStore = create<GitHubStore>()(
       languages:       {},
       searchQuery:     '',
       repoSearch:      '',
-      recentSearches: loadRecent(),
+      recentSearches: loadRecent(),      
       // ── Status
       userStatus:      'idle',
       repoStatus:      'idle',
@@ -180,6 +179,12 @@ export const useGitHubStore = create<GitHubStore>()(
         set({ recentSearches: [] }, false, 'clearRecentSearches');
       },
 
+      // clearRecentSearches ke baad:
+     removeRecentSearch: (username: string) => {
+     const updated = get().recentSearches.filter((s) => s !== username);
+      saveRecent(updated);
+      set({ recentSearches: updated }, false, 'removeRecentSearch');
+      },
       resetExplorer: () => {
         set(
           {
@@ -260,7 +265,6 @@ export const useExplorer = () => {
   const fetchLangs     = useGitHubStore((s) => s.fetchLanguages);
   const setPath        = useGitHubStore((s) => s.setCurrentPath);
   const reset          = useGitHubStore((s) => s.resetExplorer);
-
   return {
     currentRepo,
     contents,
@@ -285,5 +289,6 @@ export const useSearch = () => {
   const fetchUser        = useGitHubStore((s) => s.fetchUser);
   const addRecent        = useGitHubStore((s) => s.addRecentSearch);
   const clearRecent      = useGitHubStore((s) => s.clearRecentSearches);
-  return { searchQuery, recentSearches, setSearchQuery, fetchUser, addRecent, clearRecent };
+  const removeRecent     = useGitHubStore((s) => s.removeRecentSearch);
+  return { searchQuery, recentSearches, setSearchQuery, fetchUser, addRecent, clearRecent, removeRecent };
 };

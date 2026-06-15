@@ -1,5 +1,4 @@
 // All GitHub API calls — components never call fetch directly.
-
 import type {
   GitHubUser,
   GitHubRepo,
@@ -37,7 +36,6 @@ const LANGUAGE_COLORS: Record<string, string> = {
 export function getLanguageColor(language: string): string {
   return LANGUAGE_COLORS[language] ?? '#8b949e';
 }
-
 // ── Core fetcher
 async function githubFetch<T>(endpoint: string): Promise<T> {
   const res = await fetch(`${BASE}?endpoint=${encodeURIComponent(endpoint)}`);
@@ -58,9 +56,8 @@ export async function fetchRepos(username: string): Promise<GitHubRepo[]> {
     `/users/${username}/repos?per_page=100&sort=updated`
   );
 }
-
 export async function fetchContents(
-  owner: string,
+  owner:string,
   repo: string,
   path: string = ''
 ): Promise<GitHubContent[]> {
@@ -69,7 +66,6 @@ export async function fetchContents(
   // API returns object for file, array for directory
   return Array.isArray(data) ? data : [data];
 }
-
 export async function fetchFileContent(
   owner: string,
   repo: string,
@@ -84,8 +80,6 @@ export async function fetchLanguages(
 ): Promise<GitHubLanguages> {
   return githubFetch<GitHubLanguages>(`/repos/${owner}/${repo}/languages`);
 }
-
-
 /** Converts raw language bytes into sorted LanguageStat array with % */
 export function processLanguages(raw: GitHubLanguages): LanguageStat[] {
   const total = Object.values(raw).reduce((sum, bytes) => sum + bytes, 0);
@@ -141,7 +135,6 @@ export function formatRelativeTime(isoString: string): string {
   if (months < 12)   return `${months}mo ago`;
   return `${years}y ago`;
 }
-
 /** Returns file extension from filename */
 export function getFileExtension(filename: string): string {
   return filename.split('.').pop()?.toLowerCase() ?? '';
@@ -158,9 +151,7 @@ export function sortRepos(
     return a.name.localeCompare(b.name);
   });
 }
-
-// ── Custom error 
-
+// ── Custom error class for better error handling in components
 export class GitHubError extends Error {
   constructor(message: string, public readonly statusCode?: number) {
     super(message);

@@ -116,4 +116,5 @@ export interface GitHubStore {
   addRecentSearch: (username: string) => void;
   clearRecentSearches: () => void;
   resetExplorer: () => void;
+  removeRecentSearch: (username: string) => void;
 }

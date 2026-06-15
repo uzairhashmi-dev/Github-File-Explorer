@@ -1,9 +1,7 @@
 'use client';
-
 // components/CodeViewer.tsx
 // Displays decoded file content with line numbers, copy button, raw link.
 // No external syntax highlighting package — uses CSS classes for clean display.
-
 import { useState, useMemo } from 'react';
 import {
   Copy,
@@ -18,16 +16,13 @@ import { decodeFileContent, formatFileSize, getFileExtension } from '@/lib/githu
 import { CodeViewerSkeleton } from '@/components/Loader';
 import type { GitHubFileContent } from '@/types/github';
 
-
 interface CodeViewerProps {
   file: GitHubFileContent | null;
   status: 'idle' | 'loading' | 'success' | 'error';
   onClose: () => void;
 }
-
 // Max lines to show before "Show more" button
 const PREVIEW_LINES = 100;
-
 
 export default function CodeViewer({ file, status, onClose }: CodeViewerProps) {
 
@@ -43,7 +38,6 @@ export default function CodeViewer({ file, status, onClose }: CodeViewerProps) {
   const lines       = content.split('\n');
   const isTruncated = lines.length > PREVIEW_LINES && !expanded;
   const visibleLines = isTruncated ? lines.slice(0, PREVIEW_LINES) : lines;
-
   // ── Copy to clipboard 
   async function handleCopy() {
     if (!content) return;
@@ -51,12 +45,10 @@ export default function CodeViewer({ file, status, onClose }: CodeViewerProps) {
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
-
-  // ── Loading ──
+  // ── Loading 
   if (status === 'loading') {
     return <CodeViewerSkeleton />;
   }
-
   // ── Error / idle 
   if (status === 'error' || !file) {
     return (
@@ -75,10 +67,8 @@ export default function CodeViewer({ file, status, onClose }: CodeViewerProps) {
   return (
     <div className="animate-fade-in overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-700/60 dark:bg-zinc-800/60">
 
-      {/* ── Header  */}
       <div className="flex items-center gap-2 border-b border-zinc-100 bg-zinc-50/80 px-4 py-3 dark:border-zinc-700/60 dark:bg-zinc-900/40">
 
-        {/* File info */}
         <FileCode className="h-4 w-4 shrink-0 text-violet-500 dark:text-violet-400" />
         <span className="min-w-0 flex-1 truncate text-sm font-semibold text-zinc-800 dark:text-zinc-100">
           {file.name}

@@ -33,7 +33,6 @@ interface FileExplorerProps {
   onFileClick: (file: GitHubContent) => void;
 }
 
-
 export default function FileExplorer({
   owner,
   repo,
@@ -67,9 +66,7 @@ export default function FileExplorer({
   return (
     <div className="animate-fade-in overflow-hidden rounded-2xl border border-zinc-200 bg-white dark:border-zinc-700/60 dark:bg-zinc-800/60">
 
-      {/* ── Header */}
       <div className="flex items-center gap-2 border-b border-zinc-100 bg-zinc-50/80 px-4 py-3 dark:border-zinc-700/60 dark:bg-zinc-900/40">
-
         {/* Back button */}
         {currentPath && (
           <button
@@ -138,7 +135,6 @@ export default function FileExplorer({
           </p>
         </div>
       )}
-
       {/* ── File / folder rows  */}
       {status === 'success' && contents.length > 0 && (
         <ul role="list">
@@ -173,7 +169,6 @@ export default function FileExplorer({
 }
 
 // File row
-
 interface FileRowProps {
   item: GitHubContent;
   isLast: boolean;

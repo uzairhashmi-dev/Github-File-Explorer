@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 // components/SearchBar.tsx
 // GitHub username search — recent searches dropdown, keyboard navigation.
@@ -9,10 +9,10 @@ import {
   useCallback,
   useState,
   type KeyboardEvent,
-} from 'react';
-import { useRouter } from 'next/navigation';
-import { Search, X, Clock, Trash2, ArrowRight } from 'lucide-react';
-import { useSearch } from '@/store/githubStore';
+} from "react";
+import { useRouter } from "next/navigation";
+import { Search, X, Clock, Trash2, ArrowRight } from "lucide-react";
+import { useSearch } from "@/store/githubStore";
 
 export default function SearchBar() {
   const router = useRouter();
@@ -23,23 +23,24 @@ export default function SearchBar() {
     fetchUser,
     addRecent,
     clearRecent,
+    removeRecent,
   } = useSearch();
 
-  const [isOpen, setIsOpen]       = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(-1);
 
-  const inputRef     = useRef<HTMLInputElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const listboxId    = 'search-listbox';
+  const listboxId = "search-listbox";
 
-  // ── Open on focus if recents exist 
+  // ── Open on focus if recents exist
   function handleFocus() {
     if (recentSearches.length > 0) {
       setIsOpen(true);
     }
   }
 
-  // ── Click outside closes dropdown 
+  // ── Click outside closes dropdown
   useEffect(() => {
     function onClickOutside(e: MouseEvent) {
       if (
@@ -49,20 +50,20 @@ export default function SearchBar() {
         setIsOpen(false);
       }
     }
-    document.addEventListener('mousedown', onClickOutside);
-    return () => document.removeEventListener('mousedown', onClickOutside);
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
-  // ── "/" shortcut focuses search 
+  // ── "/" shortcut focuses search
   useEffect(() => {
     function onKeyDown(e: globalThis.KeyboardEvent) {
-      if (e.key === '/' && document.activeElement !== inputRef.current) {
+      if (e.key === "/" && document.activeElement !== inputRef.current) {
         e.preventDefault();
         inputRef.current?.focus();
       }
     }
-    document.addEventListener('keydown', onKeyDown);
-    return () => document.removeEventListener('keydown', onKeyDown);
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
   }, []);
 
   // ── Input change
@@ -83,7 +84,7 @@ export default function SearchBar() {
     setIsOpen(false);
   }
 
-  // ── Submit 
+  // ── Submit
   const handleSubmit = useCallback(
     (username: string) => {
       const trimmed = username.trim();
@@ -94,30 +95,30 @@ export default function SearchBar() {
       fetchUser(trimmed);
       router.push(`/user/${trimmed}`);
     },
-    [fetchUser, addRecent, router]
+    [fetchUser, addRecent, router],
   );
 
-  // ── Clear input 
+  // ── Clear input
   function handleClear() {
-    setSearchQuery('');
+    setSearchQuery("");
     setIsOpen(recentSearches.length > 0);
     inputRef.current?.focus();
   }
 
-  // ── Keyboard nav 
+  // ── Keyboard nav
   function handleKeyDown(e: KeyboardEvent<HTMLInputElement>) {
     const items = isOpen && !searchQuery.trim() ? recentSearches : [];
 
     switch (e.key) {
-      case 'ArrowDown':
+      case "ArrowDown":
         e.preventDefault();
         setActiveIndex((p) => (p < items.length - 1 ? p + 1 : 0));
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         e.preventDefault();
         setActiveIndex((p) => (p > 0 ? p - 1 : items.length - 1));
         break;
-      case 'Enter':
+      case "Enter":
         e.preventDefault();
         if (activeIndex >= 0 && items[activeIndex]) {
           handleSubmit(items[activeIndex]);
@@ -125,18 +126,18 @@ export default function SearchBar() {
           handleSubmit(searchQuery);
         }
         break;
-      case 'Escape':
+      case "Escape":
         setIsOpen(false);
         inputRef.current?.blur();
         break;
     }
   }
 
-  const showRecents = isOpen && recentSearches.length > 0 && !searchQuery.trim();
+  const showRecents =
+    isOpen && recentSearches.length > 0 && !searchQuery.trim();
 
   return (
     <div ref={containerRef} className="relative w-full max-w-xl">
-
       {/* Input */}
       <div className="relative flex items-center">
         <Search className="pointer-events-none absolute left-4 h-5 w-5 text-zinc-400 dark:text-zinc-500" />
@@ -223,8 +224,8 @@ export default function SearchBar() {
               onMouseEnter={() => setActiveIndex(index)}
               className={`flex cursor-pointer items-center gap-3 border-b border-zinc-100 px-4 py-3 transition-colors duration-100 last:border-0 dark:border-zinc-700/50 ${
                 index === activeIndex
-                  ? 'bg-violet-50 dark:bg-violet-950/40'
-                  : 'hover:bg-zinc-50 dark:hover:bg-zinc-700/40'
+                  ? "bg-violet-50 dark:bg-violet-950/40"
+                  : "hover:bg-zinc-50 dark:hover:bg-zinc-700/40"
               }`}
             >
               <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-zinc-100 dark:bg-zinc-700">
@@ -235,7 +236,19 @@ export default function SearchBar() {
               <span className="text-sm font-medium text-zinc-700 dark:text-zinc-200">
                 {username}
               </span>
-              <ArrowRight className="ml-auto h-3.5 w-3.5 text-zinc-300 dark:text-zinc-600" />
+              <div className="ml-auto flex items-center gap-2">
+                <button
+                  onMouseDown={(e) => {
+                    e.stopPropagation();
+                    removeRecent(username);
+                  }}
+                  className="rounded p-0.5 text-zinc-400 hover:bg-zinc-200 hover:text-zinc-600 dark:hover:bg-zinc-600 dark:hover:text-zinc-200"
+                  aria-label={`Remove ${username} from recent searches`}
+                >
+                  <X className="h-3.5 w-3.5" />
+                </button>
+                <ArrowRight className="h-3.5 w-3.5 text-zinc-300 dark:text-zinc-600" />
+              </div>{" "}
             </li>
           ))}
         </ul>
