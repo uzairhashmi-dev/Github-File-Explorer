@@ -91,8 +91,8 @@ export default function SearchBar() {
       if (!trimmed) return;
       setIsOpen(false);
       inputRef.current?.blur();
-      addRecent(trimmed);
-      fetchUser(trimmed);
+      addRecent(trimmed);     //localstorge maysve
+      fetchUser(trimmed);     //call zustand actio
       router.push(`/user/${trimmed}`);
     },
     [fetchUser, addRecent, router],

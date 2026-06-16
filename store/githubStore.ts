@@ -71,7 +71,7 @@ export const useGitHubStore = create<GitHubStore>()(
         try {
           const user = await fetchUser(username);
           set({ userStatus: 'success', user }, false, 'fetchUser/success');
-          // Auto-fetch repos after user loads
+          // Auto-fetch repos after user load
           get().fetchRepos(username);
         } catch (err) {
           const message = err instanceof Error ? err.message : 'User not found.';

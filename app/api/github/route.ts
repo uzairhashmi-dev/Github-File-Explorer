@@ -3,7 +3,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 const GITHUB_BASE = 'https://api.github.com';
-
+// Yeh Next.js SERVER pe run hota hai — browser pe nahi, isliye hum directly env vars access kar sakte hain without exposing them to client bundle.
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const endpoint = searchParams.get('endpoint');
@@ -28,7 +28,6 @@ export async function GET(request: NextRequest) {
   });
 
   const data = await res.json();
-
   // Pass GitHub status code through — store handles 404, 403 etc.
   return NextResponse.json(data, { status: res.status });
 }
