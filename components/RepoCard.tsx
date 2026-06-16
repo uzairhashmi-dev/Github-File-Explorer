@@ -1,5 +1,4 @@
 'use client';
-
 // components/RepoCard.tsx
 // Single repository card — name, description, stats, language badge.
 
@@ -16,7 +15,7 @@ export default function RepoCard({ repo, onExplore }: RepoCardProps) {
   return (
     <article className="group flex flex-col rounded-xl border border-zinc-200 bg-white p-5 transition-all duration-200 hover:border-violet-300 hover:shadow-md hover:shadow-violet-100/50 dark:border-zinc-700/60 dark:bg-zinc-800/60 dark:hover:border-violet-600/50 dark:hover:shadow-violet-900/20">
 
-      {/* ── Header ─────────────────────────────────────────────────────────── */}
+      {/* ── Header  */}
       <div className="mb-2 flex items-start justify-between gap-2">
         <div className="flex min-w-0 items-center gap-2">
           {/* Fork badge */}
@@ -42,12 +41,12 @@ export default function RepoCard({ repo, onExplore }: RepoCardProps) {
         </span>
       </div>
 
-      {/* ── Description ────────────────────────────────────────────────────── */}
+      {/* ── Description */}
       <p className="mb-3 line-clamp-2 min-h-10 text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">
         {repo.description ?? 'No description provided.'}
       </p>
 
-      {/* ── Topics ─────────────────────────────────────────────────────────── */}
+      {/* ── Topics  */}
       {repo.topics.length > 0 && (
         <div className="mb-3 flex flex-wrap gap-1.5">
           {repo.topics.slice(0, 4).map((topic) => (
@@ -64,7 +63,7 @@ export default function RepoCard({ repo, onExplore }: RepoCardProps) {
         </div>
       )}
 
-      {/* ── Stats ──────────────────────────────────────────────────────────── */}
+      {/* ── Stats  */}
       <div className="mt-auto flex flex-wrap items-center gap-x-3 gap-y-1.5">
         {/* Language */}
         {repo.language && (
@@ -87,19 +86,17 @@ export default function RepoCard({ repo, onExplore }: RepoCardProps) {
         {repo.watchers_count > 0 && (
           <StatBadge icon={<Eye className="h-3 w-3" />} value={formatStat(repo.watchers_count)} />
         )}
-
         {/* License */}
         {repo.license && (
           <StatBadge icon={<Scale className="h-3 w-3" />} value={repo.license.spdx_id} />
         )}
-
         {/* Updated */}
         <span className="ml-auto text-[11px] text-zinc-400 dark:text-zinc-500">
           {formatRelativeTime(repo.updated_at)}
         </span>
       </div>
 
-      {/* ── Action buttons ─────────────────────────────────────────────────── */}
+      {/* ── Action buttons  */}
       <div className="mt-4 flex gap-2 border-t border-zinc-100 pt-3 dark:border-zinc-700/50">
         <button
           onClick={() => onExplore(repo)}
@@ -122,9 +119,7 @@ export default function RepoCard({ repo, onExplore }: RepoCardProps) {
     </article>
   );
 }
-
-// ── Sub-components ────────────────────────────────────────────────────────────
-
+// ── Sub-components 
 function StatBadge({ icon, value }: { icon: React.ReactNode; value: string }) {
   return (
     <span className="flex items-center gap-1 text-xs text-zinc-500 dark:text-zinc-400">
@@ -133,9 +128,7 @@ function StatBadge({ icon, value }: { icon: React.ReactNode; value: string }) {
     </span>
   );
 }
-
-// ── Helpers ───────────────────────────────────────────────────────────────────
-
+// ── Helpers 
 function formatStat(n: number): string {
   if (n >= 1000) return `${(n / 1000).toFixed(1)}k`;
   return String(n);

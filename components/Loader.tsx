@@ -1,16 +1,12 @@
 'use client';
 // components/Loader.tsx
 
-// ── Primitive 
-
 function Skeleton({ className = '' }: { className?: string }) {
   return (
     <div className={`animate-pulse rounded-lg bg-zinc-200 dark:bg-zinc-700/60 ${className}`} />
   );
 }
-
 // ── 1. Profile Card Skeleton 
-
 export function ProfileCardSkeleton() {
   return (
     <div className="w-full rounded-2xl border border-zinc-200 bg-white p-6 dark:border-zinc-700/60 dark:bg-zinc-800/60 sm:p-8">
@@ -44,9 +40,7 @@ export function ProfileCardSkeleton() {
     </div>
   );
 }
-
 // ── 2. Repo Card Skeleton 
-
 export function RepoCardSkeleton() {
   return (
     <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-700/60 dark:bg-zinc-800/60">
@@ -66,7 +60,6 @@ export function RepoCardSkeleton() {
 }
 
 // ── 3. Repo List Skeleton 
-
 export function RepoListSkeleton() {
   return (
     <div className="space-y-3">
@@ -84,9 +77,7 @@ export function RepoListSkeleton() {
     </div>
   );
 }
-
-// ── 4. File Explorer Skeleton ─────────────────────────────────────────────────
-
+// ── 4. File Explorer Skeleton 
 export function FileExplorerSkeleton() {
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white dark:border-zinc-700/60 dark:bg-zinc-800/60">
@@ -110,9 +101,7 @@ export function FileExplorerSkeleton() {
     </div>
   );
 }
-
-// ── 5. Code Viewer Skeleton ───────────────────────────────────────────────────
-
+// ── 5. Code Viewer Skeleton 
 export function CodeViewerSkeleton() {
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white dark:border-zinc-700/60 dark:bg-zinc-800/60">
@@ -142,9 +131,7 @@ export function CodeViewerSkeleton() {
     </div>
   );
 }
-
-// ── 6. Language Bar Skeleton ──────────────────────────────────────────────────
-
+// ── 6. Language Bar Skeleton 
 export function LanguageBarSkeleton() {
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-700/60 dark:bg-zinc-800/60">
@@ -161,9 +148,7 @@ export function LanguageBarSkeleton() {
     </div>
   );
 }
-
-// ── 7. Full Page Skeleton ─────────────────────────────────────────────────────
-
+// ── 7. Full Page Skeleton
 export function FullPageSkeleton() {
   return (
     <div className="mx-auto w-full max-w-6xl space-y-6 px-4 py-8 sm:px-6">

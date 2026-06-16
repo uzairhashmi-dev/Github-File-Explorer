@@ -1,6 +1,5 @@
 // app/page.tsx
 // Home page — search landing screen.
-// Server Component — interactive chips in separate client component.
 
 import type { Metadata } from 'next';
 import { Search, GitBranch, Eye, Star } from 'lucide-react';
@@ -38,15 +37,15 @@ export default function HomePage() {
         </div>
 
         {/* Headline */}
-        <h1 className="mb-2 text-4xl font-black tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
+        <h1 className="mb-2 text-4xl  font-black tracking-tight text-zinc-900 dark:text-zinc-100 sm:text-5xl">
           Git
-          <span className="bg-linear-to-r from-violet-500 to-purple-600 bg-clip-text text-transparent">
+          <span className="bg-linear-to-r pl-2 from-violet-500 to-purple-600 bg-clip-text text-transparent">
             Explorer
           </span>
         </h1>
 
         <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400 sm:text-base">
-          Search any GitHub user — browse repos, explore files, read code.
+          Search any GitHub user — browser repos, explore files, read code.
         </p>
 
         {/* Search */}

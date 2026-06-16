@@ -37,7 +37,6 @@ function TwitterIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
 export default function ProfileCard({ user }: ProfileCardProps) {
   return (
     <article className="w-full animate-fade-in rounded-2xl border border-zinc-200 bg-white dark:border-zinc-700/60 dark:bg-zinc-800/60">
@@ -45,7 +44,6 @@ export default function ProfileCard({ user }: ProfileCardProps) {
       {/* ── Top section */}
       <div className="p-6 sm:p-8">
         <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start">
-
           {/* Avatar */}
           <div className="relative shrink-0">
             <Image
@@ -131,7 +129,6 @@ export default function ProfileCard({ user }: ProfileCardProps) {
           </div>
         </div>
       </div>
-
       {/* ── Stats row */}
       <div className="grid grid-cols-3 divide-x divide-zinc-100 border-t border-zinc-100 dark:divide-zinc-700/60 dark:border-zinc-700/60">
         <StatTile

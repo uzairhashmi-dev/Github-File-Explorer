@@ -1,7 +1,6 @@
 'use client';
 
 // components/RepoList.tsx
-// Repo grid with sort, filter by language, and search within repos.
 // On "Explore Files" click → navigates to file explorer page. 
 
 import { useRouter } from 'next/navigation';
@@ -24,7 +23,6 @@ const SORT_OPTIONS = [
 
 export default function RepoList({ username, repos }: RepoListProps) {
   const router = useRouter();
-
   const {
     allRepos,
     repoStatus,
@@ -49,10 +47,8 @@ export default function RepoList({ username, repos }: RepoListProps) {
 
   return (
     <div className="space-y-4 animate-fade-in">
-
       {/* ── Toolbar  */}
       <div className="flex flex-wrap gap-2">
-
         {/* Repo search */}
         <div className="relative min-w-0 flex-1">
           <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-zinc-400" />

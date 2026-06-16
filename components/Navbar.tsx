@@ -1,13 +1,10 @@
 "use client";
 
-// Top navigation — logo, quick search trigger, dark/light toggle.
-
 import Link from "next/link";
 import { Sun, Moon, Search } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
 import { useSearch } from "@/store/githubStore";
 
-// Inline SVG — replaces lucide Github (not exported in this version)
 function GithubIcon({
   className,
   strokeWidth = 2,
@@ -42,7 +39,6 @@ export default function Navbar() {
     // Reset search on logo click
     setSearchQuery("");
   }
-
   return (
     <header className="sticky top-0 z-999 w-full border-b border-zinc-200/80 bg-white/90  backdrop-blur-md dark:border-zinc-800/80 dark:bg-[#0d1117]/90 transition-colors duration-300">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -60,7 +56,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col leading-none">
             <span className="text-sm font-bold tracking-tight text-zinc-900 dark:text-zinc-100">
-              GitExplorer
+              Git Explorer
             </span>
             <span className="hidden text-[10px] font-medium tracking-widest text-zinc-400 dark:text-zinc-500 sm:block">
               FILE EXPLORER
@@ -79,7 +75,7 @@ export default function Navbar() {
             className="hidden items-center gap-2 rounded-lg border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs text-zinc-500 transition-all duration-200 hover:border-violet-400 hover:text-violet-600 dark:border-zinc-700 dark:bg-zinc-800/60 dark:text-zinc-400 dark:hover:border-violet-500 dark:hover:text-violet-400 md:flex"
           >
             <Search className="h-3.5 w-3.5" />
-            <span>Search user…</span>
+            <span>Search user...</span>
             <kbd className="ml-1 rounded border border-zinc-300 bg-white px-1.5 py-0.5 font-mono text-[10px] dark:border-zinc-600 dark:bg-zinc-700">
               /
             </kbd>

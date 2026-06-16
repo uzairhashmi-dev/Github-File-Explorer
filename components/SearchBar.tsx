@@ -183,7 +183,6 @@ export default function SearchBar() {
           <ArrowRight className="h-3.5 w-3.5" />
         </button>
       )}
-
       {/* Dropdown — absolute inside containerRef, always visible */}
       {showRecents && (
         <ul
@@ -195,7 +194,7 @@ export default function SearchBar() {
           <li className="flex items-center justify-between border-b border-zinc-100 px-4 py-2 dark:border-zinc-700/60">
             <span className="flex items-center gap-1.5 text-xs font-medium text-zinc-400 dark:text-zinc-500">
               <Clock className="h-3.5 w-3.5" />
-              Recent searches
+              Recent Searches
             </span>
             <button
               onMouseDown={(e) => {

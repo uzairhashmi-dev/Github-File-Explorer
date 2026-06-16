@@ -21,7 +21,6 @@ import { formatFileSize, getFileExtension } from '@/lib/githubApi';
 import { FileExplorerSkeleton } from '@/components/Loader';
 import type { GitHubContent } from '@/types/github';
 
-
 interface FileExplorerProps {
   owner: string;
   repo: string;
@@ -186,7 +185,6 @@ function FileRow({ item, isLast, onNavigate, onFileClick }: FileRowProps) {
       onFileClick(item);
     }
   }
-
   return (
     <li
       className={`group flex cursor-pointer items-center gap-3 px-4 py-2.5 transition-colors duration-100 hover:bg-zinc-50 dark:hover:bg-zinc-700/30 ${
@@ -237,7 +235,6 @@ function FileRow({ item, isLast, onNavigate, onFileClick }: FileRowProps) {
 }
 
 // File icon by extension
-
 function FileIcon({ filename }: { filename: string }) {
   const ext = getFileExtension(filename);
 

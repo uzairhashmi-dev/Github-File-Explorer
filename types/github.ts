@@ -22,7 +22,7 @@ export interface GitHubUser {
 // ── Repository 
 export interface GitHubRepo {
   id: number;
-  name: string;               // repo name — "linux"
+  name: string;               // name — "linux"
   full_name: string;          // "torvalds/linux"
   description: string | null;
   html_url: string;           // github.com/torvalds/linux
