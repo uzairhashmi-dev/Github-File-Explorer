@@ -42,7 +42,7 @@ export default function ProfileCard({ user }: ProfileCardProps) {
   return (
     <article className="w-full animate-fade-in rounded-2xl border border-zinc-200 bg-white dark:border-zinc-700/60 dark:bg-zinc-800/60">
 
-      {/* ── Top section ──────────────────────────────────────────────────── */}
+      {/* ── Top section */}
       <div className="p-6 sm:p-8">
         <div className="flex flex-col items-center gap-5 sm:flex-row sm:items-start">
 
@@ -89,7 +89,7 @@ export default function ProfileCard({ user }: ProfileCardProps) {
             </a>
 
             {user.bio && (
-              <p className="mt-3 text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
+              <p className="mt-3 wrap-break-word text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">
                 {user.bio}
               </p>
             )}
