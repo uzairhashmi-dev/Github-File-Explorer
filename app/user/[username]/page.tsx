@@ -43,7 +43,6 @@ export default function UserPage() {
       </div>
     );
   }
-
   // ── Error 
   if (userStatus === 'error') {
     return (
@@ -85,10 +84,10 @@ export default function UserPage() {
   if (!user) return null;
 
   return (
-    <div className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:py-8sticky top-14 z-40 bg-zinc-50/90 backdrop-blur-sm py-3 dark:bg-[#0d1117]/90 border-b border-zinc-200/50 dark:border-zinc-800/50">
+    <div className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 lg:py-8">
 
       {/* Search bar */}
-      <div className="mb-6 flex justify-center animate-fade-in">
+      <div className="relative z-9999 mb-6 flex justify-center animate-fade-in">
         <SearchBar />
       </div>
 

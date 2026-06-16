@@ -189,7 +189,7 @@ export default function SearchBar() {
         <ul
           id={listboxId}
           role="listbox"
-          className="absolute left-0 right-0 top-[calc(100%+6px)] z-[9999] overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-xl dark:border-zinc-700 dark:bg-zinc-800"
+          className="absolute left-0 right-0 top-[calc(100%+6px)] z-[9999] max-h-[60vh] overflow-y-auto rounded-xl border border-zinc-200 bg-white shadow-xl dark:border-zinc-700 dark:bg-zinc-800"
         >
           {/* Header */}
           <li className="flex items-center justify-between border-b border-zinc-100 px-4 py-2 dark:border-zinc-700/60">

@@ -50,7 +50,7 @@ export default function HomePage() {
         </p>
 
         {/* Search */}
-        <div className="relative z-50 flex justify-center animate-fade-up-delay">
+        <div className="relative z-[9999] flex justify-center animate-fade-up-delay">
           <SearchBar />
         </div>
 

@@ -15,12 +15,13 @@
     -webkit-text-size-adjust: 100%;
   }
 
-  body {
-    @apply bg-zinc-50 text-zinc-900 antialiased;
-    @apply dark:bg-[#0d1117] dark:text-zinc-100;
-    font-feature-settings: "rlig" 1, "calt" 1;
-    min-height: 100dvh;
-  }
+ body {
+  @apply bg-zinc-50 text-zinc-900 antialiased;
+  @apply dark:bg-[#0d1117] dark:text-zinc-100;
+  font-feature-settings: "rlig" 1, "calt" 1;
+  min-height: 100dvh;
+  overflow-x: hidden;  
+}
 
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-violet-500;
